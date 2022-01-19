@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react"; 
+import { useHistory } from "react-router-dom";
 
 const api = "http://localhost:8088"
 
 export const EmployeeList = () => {
     const [employees, setEmployees] = useState([])
     const [specialties, setSpecialty] = useState("")
+    const history = useHistory()
 
     useEffect(
         () => {
@@ -26,6 +28,9 @@ export const EmployeeList = () => {
     )
     return (
         <>
+        <div>
+            <button className="btn btn-primary" onClick={() => {history.push("/employees/create")}}>Add Employee</button>
+        </div>
         <div>
             Specialties: { specialties }
         </div>
