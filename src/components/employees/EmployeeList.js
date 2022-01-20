@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; 
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const api = "http://localhost:8088"
 
@@ -37,7 +37,7 @@ export const EmployeeList = () => {
         {
             employees.map(
                 (e) => {
-                    return <h2 key={`customer--${e.id}`}>{e.name}</h2>
+                    return <h2 key={`customer--${e.id}`}><Link to={`/employees/${e.id}`}>{e.name}</Link></h2>
                 }
             )
         }

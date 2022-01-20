@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"; 
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import "./Tickets.css"
 
 const api = "http://localhost:8088"
 
@@ -26,8 +27,8 @@ export const TicketList = () => {
             tickets.map(
                 (ticket) => {
                     return <div key={`ticket--${ticket.id}`}>
-                       <p className={`ticket`}>
-                         {ticket.emergency ? "🚑" : ""} {ticket.description} submitted by {ticket.customer.name} and worked on by {ticket.employee.name}
+                       <p className={ticket.emergency ? 'ticketEmergency' : 'ticket'}>
+                         {ticket.emergency ? "🚑" : ""} <Link to={`/tickets/${ticket.id}`}>{ticket.description}</Link> submitted by {ticket.customer.name} and worked on by {ticket.employee.name}
                        </p>
                         </div>
                 }
